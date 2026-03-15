@@ -1,13 +1,13 @@
 steps:
-  # 1. Build the container image with the v3 tag
+  # 1. Build the container image with the v4 tag
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/trainocat-1773583814548/my-repo/notes-app:v4', '.']
 
-  # 2. Push the v3 container image to Artifact Registry
+  # 2. Push the v4 container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/trainocat-1773583814548/my-repo/notes-app:v4']
 
-  # 3. Deploy to Cloud Run with v3 image and v3 revision name
+  # 3. Deploy to Cloud Run with v4 image and v4 revision name
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -22,7 +22,7 @@ steps:
       - 'managed'
       - '--allow-unauthenticated'
       - '--revision-suffix'
-      - 'v3'
+      - 'v4'
       - '--set-env-vars'
       - 'BUCKET_NAME=${_BUCKET_NAME}'
 
