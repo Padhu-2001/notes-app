@@ -21,5 +21,9 @@ steps:
       - '--set-env-vars'
       - 'BUCKET_NAME=${_BUCKET_NAME}'
 
+# ADD THIS PART BELOW:
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
   - 'gcr.io/$PROJECT_ID/notes-app'
