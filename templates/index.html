@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Cloud Notes</title>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
+        <h1 class="text-3xl font-bold mb-6 text-indigo-600">📝 Cloud Notes</h1>
+        <form method="POST" class="mb-8">
+            <input name="title" placeholder="Note Title" class="w-full p-2 mb-2 border rounded" required>
+            <textarea name="content" placeholder="Content..." class="w-full p-2 h-32 border rounded" required></textarea>
+            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded w-full">Save to Cloud</button>
+        </form>
+        <div class="space-y-4">
+            {% for note in notes %}
+            <div class="p-4 border-l-4 border-indigo-500 bg-gray-50 rounded">
+                <h3 class="font-bold">{{ note.to_dict()['title'] }}</h3>
+                <p class="text-xs text-gray-400">{{ note.to_dict()['file_url'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
