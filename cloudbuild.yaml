@@ -1,10 +1,13 @@
 steps:
+  # 1. Build the container image with the v3 tag
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/notes-app', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/trainocat-1773583814548/my-repo/notes-app:v3', '.']
 
+  # 2. Push the v3 container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/notes-app']
+    args: ['push', 'us-central1-docker.pkg.dev/trainocat-1773583814548/my-repo/notes-app:v3']
 
+  # 3. Deploy to Cloud Run with v3 image and v3 revision name
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -12,18 +15,19 @@ steps:
       - 'deploy'
       - 'notes-service'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/notes-app'
+      - 'us-central1-docker.pkg.dev/trainocat-1773583814548/my-repo/notes-app:v3'
       - '--region'
-      - '${_REGION}'
+      - 'us-central1'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--revision-suffix'
+      - 'v3'
       - '--set-env-vars'
       - 'BUCKET_NAME=${_BUCKET_NAME}'
 
-# ADD THIS PART BELOW:
 options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
-  - 'gcr.io/$PROJECT_ID/notes-app'
+  - 'us-central1-docker.pkg.dev/trainocat-1773583814548/my-repo/notes-app:v3'
