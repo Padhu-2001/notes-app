@@ -1,0 +1,71 @@
+Build a system where
+
+File
+
+Edit
+
+View
+
+náld a system where
+
+User places food order
+
+Order is processed asynchronously
+
+Restauront accepts
+
+Delivery assigned
+
+User tracks status
+
+User API Gateway Cloud Run (Order)
+
+Pub/Sub
+
+Cloud Functions
+
+Firestore
+
+Delivery Simulation (Cloud Tasks)
+
+User Service (Cloud Run)
+
+Place order
+
+Check order status
+
+Order Processing (Pub/Sub) Event when order created
+
+Restaurant Service (Cloud function)
+
+Accept/reject order
+
+Delivery service (Cloud Function Tasks)
+
+Assign delivery agent
+
+Update status after delay
+
+Database (Firestore)
+
+Collections:
+
+orders
+
+restaurants
+
+Figgy Food Delivery
+
+Build a system sheret user places food order
+
+order is processed asynchronously
+
+Restaurant accepts
+
+Delivery assigned
+
+User tracks status
+
+has context menu
+
+In 48 Col 17
